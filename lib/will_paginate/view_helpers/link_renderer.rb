@@ -88,6 +88,7 @@ module WillPaginate
       end
 
       def link(text, target, attributes = {})
+        attributes["data-remote"] = true
         if target.is_a? Fixnum
           attributes[:rel] = rel_value(target)
           target = url(target)
