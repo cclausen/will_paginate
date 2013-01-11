@@ -88,6 +88,7 @@ module WillPaginate
       end
 
       def link(text, target, attributes = {})
+        attributes["data-remote"] = true
         if target.is_a? Fixnum
           attributes[:rel] = rel_value(target)
           target = url(target)
@@ -95,7 +96,7 @@ module WillPaginate
         attributes[:href] = target
         tag(:a, text, attributes)
       end
-      
+
       def tag(name, value, attributes = {})
         string_attributes = attributes.inject('') do |attrs, pair|
           unless pair.last.nil?
